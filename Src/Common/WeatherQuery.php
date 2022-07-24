@@ -9,8 +9,8 @@ use DateTimeZone;
 
 class WeatherQuery implements \PhpWeather\WeatherQuery
 {
-    private ?float $latitude = null;
-    private ?float $longitude = null;
+    private float $latitude;
+    private float $longitude;
     private ?DateTimeInterface $dateTime = null;
     private string $units = \PhpWeather\WeatherQuery::METRIC;
 
@@ -25,14 +25,14 @@ class WeatherQuery implements \PhpWeather\WeatherQuery
         return $weatherQuery;
     }
 
-    public function setLatitude(?float $latitude): \PhpWeather\WeatherQuery
+    public function setLatitude(float $latitude): \PhpWeather\WeatherQuery
     {
         $this->latitude = $latitude;
 
         return $this;
     }
 
-    public function setLongitude(?float $longitude): \PhpWeather\WeatherQuery
+    public function setLongitude(float $longitude): \PhpWeather\WeatherQuery
     {
         $this->longitude = $longitude;
 
@@ -68,12 +68,12 @@ class WeatherQuery implements \PhpWeather\WeatherQuery
         return $this;
     }
 
-    public function getLatitude(): ?float
+    public function getLatitude(): float
     {
         return $this->latitude;
     }
 
-    public function getLongitude(): ?float
+    public function getLongitude(): float
     {
         return $this->longitude;
     }
