@@ -5,15 +5,12 @@ namespace PhpWeather\Common;
 
 use DateTimeInterface;
 use JetBrains\PhpStorm\ArrayShape;
+use PhpWeather\Constants\Type;
 use PhpWeather\Exception\InvalidValueException;
 use PhpWeather\Weather;
 
 class WeatherCollection implements \PhpWeather\WeatherCollection
 {
-    private const HISTORICAL = 'historical';
-    private const CURRENT = 'current';
-    private const FORECAST = 'forecast';
-
     /**
      * @var Weather[]
      */
@@ -33,7 +30,7 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
     public function __construct()
     {
         $this->position = 0;
-        $this->positionType = self::HISTORICAL;
+        $this->positionType = Type::HISTORICAL;
     }
 
     /** @noinspection PhpMixedReturnTypeCanBeReducedInspection */
@@ -42,9 +39,9 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
      */
     public function current(): mixed
     {
-        if ($this->positionType === self::HISTORICAL) {
+        if ($this->positionType === Type::HISTORICAL) {
             $current = $this->historical[$this->position];
-        } elseif ($this->positionType === self::CURRENT) {
+        } elseif ($this->positionType === Type::CURRENT) {
             $current = $this->current;
         } else {
             $current = $this->forecast[$this->position];
@@ -59,20 +56,20 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
 
     public function next(): void
     {
-        if ($this->positionType === self::HISTORICAL) {
+        if ($this->positionType === Type::HISTORICAL) {
             ++$this->position;
             if ($this->position >= count($this->historical)) {
                 $this->position = 0;
                 if ($this->current !== null) {
-                    $this->positionType = self::CURRENT;
+                    $this->positionType = Type::CURRENT;
                 } else {
-                    $this->positionType = self::FORECAST;
+                    $this->positionType = Type::FORECAST;
                 }
             }
-        } elseif ($this->positionType === self::CURRENT) {
+        } elseif ($this->positionType === Type::CURRENT) {
             $this->position = 0;
-            $this->positionType = self::FORECAST;
-        } elseif ($this->positionType === self::FORECAST) {
+            $this->positionType = Type::FORECAST;
+        } elseif ($this->positionType === Type::FORECAST) {
             ++$this->position;
         }
     }
@@ -91,10 +88,10 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
 
     public function valid(): bool
     {
-        if ($this->positionType === self::HISTORICAL) {
+        if ($this->positionType === Type::HISTORICAL) {
             return array_key_exists($this->position, $this->historical);
         }
-        if ($this->positionType === self::CURRENT) {
+        if ($this->positionType === Type::CURRENT) {
             return $this->current !== null;
         }
 
@@ -104,7 +101,7 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
     public function rewind(): void
     {
         $this->position = 0;
-        $this->positionType = self::HISTORICAL;
+        $this->positionType = Type::HISTORICAL;
     }
 
     public function count(): int
@@ -119,13 +116,13 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
 
     public function add(Weather $weather): \PhpWeather\WeatherCollection
     {
-        if ($weather->getType() === Weather::HISTORICAL) {
+        if ($weather->getType() === Type::HISTORICAL) {
             $this->historical[] = $weather;
         }
-        if ($weather->getType() === Weather::FORECAST) {
+        if ($weather->getType() === Type::FORECAST) {
             $this->forecast[] = $weather;
         }
-        if ($this->current === null && ($weather->getType() === Weather::CURRENT)) {
+        if ($this->current === null && ($weather->getType() === Type::CURRENT)) {
             $this->current = $weather;
         }
 

@@ -7,9 +7,6 @@ use DateTimeInterface;
 
 interface WeatherQuery
 {
-    public const METRIC = 'metric';
-    public const IMPERIAL = 'imperial';
-
     public static function create(float $latitude, float $longitude, ?DateTimeInterface $dateTime): self;
 
     public function setLatitude(float $latitude): self;

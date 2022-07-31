@@ -2,19 +2,20 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use PhpWeather\Common\Weather;
 use PhpWeather\Common\WeatherCollection;
-use PhpWeather\Weather;
+use PhpWeather\Constants\Type;
 
 class WeatherCollectionTest extends TestCase
 {
-    public function testYolo(): void
+    public function testCollection(): void
     {
         $historicalDateTime1 = (new DateTime())
             ->setTimezone(new DateTimeZone('UTC'))
             ->sub(new DateInterval('P2D'));
 
-        $historicalWeather1 = (new \PhpWeather\Common\Weather())
-            ->setType(Weather::HISTORICAL)
+        $historicalWeather1 = (new Weather())
+            ->setType(Type::HISTORICAL)
             ->setUtcDateTime($historicalDateTime1)
             ->setTemperature(1);
 
@@ -22,8 +23,8 @@ class WeatherCollectionTest extends TestCase
             ->setTimezone(new DateTimeZone('UTC'))
             ->sub(new DateInterval('P1D'));
 
-        $historicalWeather2 = (new \PhpWeather\Common\Weather())
-            ->setType(Weather::HISTORICAL)
+        $historicalWeather2 = (new Weather())
+            ->setType(Type::HISTORICAL)
             ->setUtcDateTime($historicalDateTime2)
             ->setTemperature(2);
 
@@ -40,8 +41,8 @@ class WeatherCollectionTest extends TestCase
         $currentWeather = (new DateTime())
             ->setTimezone(new DateTimeZone('UTC'));
 
-        $currentWeather = (new \PhpWeather\Common\Weather())
-            ->setType(Weather::CURRENT)
+        $currentWeather = (new Weather())
+            ->setType(Type::CURRENT)
             ->setUtcDateTime($currentWeather)
             ->setTemperature(3);
         $weatherCollection->add($currentWeather);
@@ -55,8 +56,8 @@ class WeatherCollectionTest extends TestCase
             ->setTimezone(new DateTimeZone('UTC'))
             ->add(new DateInterval('P1D'));
 
-        $forecastWeather1 = (new \PhpWeather\Common\Weather())
-            ->setType(Weather::FORECAST)
+        $forecastWeather1 = (new Weather())
+            ->setType(Type::FORECAST)
             ->setUtcDateTime($forecastDateTime1)
             ->setTemperature(4);
 
@@ -64,8 +65,8 @@ class WeatherCollectionTest extends TestCase
             ->setTimezone(new DateTimeZone('UTC'))
             ->add(new DateInterval('P2D'));
 
-        $forecastWeather2 = (new \PhpWeather\Common\Weather())
-            ->setType(Weather::FORECAST)
+        $forecastWeather2 = (new Weather())
+            ->setType(Type::FORECAST)
             ->setUtcDateTime($forecastDateTime2)
             ->setTemperature(5);
 

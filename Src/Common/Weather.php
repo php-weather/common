@@ -11,6 +11,7 @@ class Weather implements \PhpWeather\Weather
     private ?float $longitude = null;
     private ?float $temperature = null;
     private ?float $feelsLike = null;
+    private ?float $dewPoint = null;
     private ?float $humidity = null;
     private ?float $pressure = null;
     private ?float $windSpeed = null;
@@ -238,6 +239,18 @@ class Weather implements \PhpWeather\Weather
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getDewPoint(): ?float
+    {
+        return $this->dewPoint;
+    }
+
+    public function setDewPoint(?float $dewPoint): self
+    {
+        $this->dewPoint = $dewPoint;
 
         return $this;
     }

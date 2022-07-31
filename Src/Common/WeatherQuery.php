@@ -6,13 +6,14 @@ namespace PhpWeather\Common;
 use DateTime;
 use DateTimeInterface;
 use DateTimeZone;
+use PhpWeather\Constants\Unit;
 
 class WeatherQuery implements \PhpWeather\WeatherQuery
 {
     private float $latitude;
     private float $longitude;
     private ?DateTimeInterface $dateTime = null;
-    private string $units = \PhpWeather\WeatherQuery::METRIC;
+    private string $units = Unit::METRIC;
 
 
     public static function create(float $latitude, float $longitude, ?DateTimeInterface $dateTime = null): self
@@ -61,7 +62,7 @@ class WeatherQuery implements \PhpWeather\WeatherQuery
 
     public function setUnits(string $units): \PhpWeather\WeatherQuery
     {
-        if (in_array($units, [\PhpWeather\WeatherQuery::METRIC, \PhpWeather\WeatherQuery::IMPERIAL], true)) {
+        if (in_array($units, [Unit::STANDARD, Unit::METRIC, Unit::IMPERIAL], true)) {
             $this->units = $units;
         }
 

@@ -9,10 +9,6 @@ use PhpWeather\Common\Source;
 
 interface Weather extends JsonSerializable
 {
-    public const CURRENT = 'current';
-    public const HISTORICAL = 'historical';
-    public const FORECAST = 'forecast';
-
     public function getLatitude(): ?float;
     public function setLatitude(?float $latitude): self;
     public function getLongitude(): ?float;
@@ -22,6 +18,8 @@ interface Weather extends JsonSerializable
     public function setTemperature(?float $temperature): self;
     public function getFeelsLike(): ?float;
     public function setFeelsLike(?float $feelsLike): self;
+    public function getDewPoint(): ?float;
+    public function setDewPoint(?float $dewPoint): self;
 
     public function getHumidity(): ?float;
     public function setHumidity(?float $humidity): self;

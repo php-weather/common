@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PhpWeather;
 
 use PhpWeather\Common\Source;
-use PhpWeather\Exception\Exception;
 
 interface Provider
 {
