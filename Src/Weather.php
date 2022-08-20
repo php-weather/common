@@ -54,4 +54,5 @@ interface Weather extends JsonSerializable
      */
     public function getSources(): array;
     public function addSource(Source $source): self;
+    public function removeSource(Source $source): self;
 }

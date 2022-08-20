@@ -203,6 +203,14 @@ class Weather implements \PhpWeather\Weather
         return $this;
     }
 
+    public function removeSource(Source $source): self
+    {
+        if (($key = array_search($source, $this->sources, true)) !== false) {
+            unset($this->sources[$key]);
+        }
+        return $this;
+    }
+
     /**
      * @return mixed
      */
