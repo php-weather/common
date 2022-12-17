@@ -1,8 +1,8 @@
 {
-  "name": "php-weather/common",
+  "name": "php-weather/core",
   "type": "library",
   "description": "Weather development library",
-  "homepage": "https://github.com/lostfocus/weather",
+  "homepage": "https://github.com/php-weather",
   "license": "MIT",
   "authors": [
     {
