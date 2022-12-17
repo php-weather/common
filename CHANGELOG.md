@@ -9,4 +9,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* Renamed the package in Packagist form `php-weather/common` to `php-weather/core`(#1)
+* Renamed the package in Packagist from `php-weather/common` to `php-weather/core`(#1)
