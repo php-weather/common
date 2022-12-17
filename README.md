@@ -1,11 +1,11 @@
-# common
+# core
 
 Common interfaces, data and utility classes for PHP Weather
 
 ![Packagist Version](https://img.shields.io/packagist/v/php-weather/common)  
 ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/php-weather/common/0.3.1)
 ![GitHub last commit](https://img.shields.io/github/last-commit/php-weather/common)  
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/php-weather/common/PHP%20Composer)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/php-weather/common/php.yml?branch=main)
 ![GitHub](https://img.shields.io/github/license/php-weather/common)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/php-weather/common)
 
