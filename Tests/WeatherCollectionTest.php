@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+namespace PhpWeather\Tests;
+
+use DateTime;
+use DateInterval;
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 use PhpWeather\Common\Weather;
 use PhpWeather\Common\WeatherCollection;
