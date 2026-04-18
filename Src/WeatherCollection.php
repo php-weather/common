@@ -28,7 +28,7 @@ interface WeatherCollection extends Countable, Iterator, JsonSerializable
 
     public function hasForecast(): bool;
     /**
-     * @return Weather[];
+     * @return Weather[]
      */
     public function getForecast(): array;
 }

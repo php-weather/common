@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PhpWeather\Common;
 
 use DateTimeInterface;
-use JetBrains\PhpStorm\ArrayShape;
 use PhpWeather\Constants\Type;
 use PhpWeather\Exception\InvalidValueException;
 use PhpWeather\Weather;
@@ -17,7 +16,7 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
     private array $historical = [];
     private ?Weather $current = null;
     /**
-     * @var Weather[];
+     * @var Weather[]
      */
     private array $forecast = [];
 
@@ -33,11 +32,10 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
         $this->positionType = Type::HISTORICAL;
     }
 
-    /** @noinspection PhpMixedReturnTypeCanBeReducedInspection */
     /**
      * @throws InvalidValueException
      */
-    public function current(): mixed
+    public function current(): Weather
     {
         if ($this->positionType === Type::HISTORICAL) {
             $current = $this->historical[$this->position];
@@ -48,7 +46,7 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
         }
 
         if ($current === null) {
-            throw new InvalidValueException();
+            throw new InvalidValueException('No current weather found');
         }
 
         return $current;
@@ -75,9 +73,8 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{positionType: string, position: int}
      */
-    #[ArrayShape(['positionType' => "string", 'position' => "int"])]
     public function key(): array
     {
         return [
@@ -188,9 +185,10 @@ class WeatherCollection implements \PhpWeather\WeatherCollection
         return count($this->forecast) > 0;
     }
 
-    /** @noinspection PhpMixedReturnTypeCanBeReducedInspection */
-    #[ArrayShape(['historical' => "\PhpWeather\Weather[]", 'current' => "null|\PhpWeather\Weather", 'forecast' => "\PhpWeather\Weather[]"])]
-    public function jsonSerialize(): mixed
+    /**
+     * @return array{historical: Weather[], current: Weather|null, forecast: Weather[]}
+     */
+    public function jsonSerialize(): array
     {
         return [
             'historical' => $this->historical,
