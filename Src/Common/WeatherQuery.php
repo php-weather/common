@@ -86,7 +86,7 @@ class WeatherQuery implements \PhpWeather\WeatherQuery
 
     public function getTimestamp(): ?int
     {
-        if ($this->dateTime instanceof DateTimeInterface && $this->dateTime->getTimestamp() !== false) {
+        if ($this->dateTime instanceof DateTimeInterface) {
             return $this->dateTime->getTimestamp();
         }
 

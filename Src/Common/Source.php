@@ -39,18 +39,22 @@ class Source implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return array{shortName: string, name: string, creditUrl: ?string}
      */
-    public function jsonSerialize(): mixed
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }
 
     /**
-     * @return array<string, string|null>
+     * @return array{shortName: string, name: string, creditUrl: ?string}
      */
     public function toArray(): array
     {
-        return get_object_vars($this);
+        return [
+            'shortName' => $this->shortName,
+            'name' => $this->name,
+            'creditUrl' => $this->creditUrl,
+        ];
     }
 }
