@@ -1,3 +1,12 @@
+## [0.4.2-rc.1](https://github.com/php-weather/common/compare/0.4.1...0.4.2-rc.1) (2026-04-18)
+
+
+### Bug Fixes
+
+* **deps:** bump actions/checkout from 4 to 6 ([93f6597](https://github.com/php-weather/common/commit/93f65977f37351892b8c6185d44994e339ebd0c5))
+* **deps:** bump actions/setup-node from 4 to 6 ([087389f](https://github.com/php-weather/common/commit/087389fdb69d747e1438c8def368e1f2982a13e0))
+* Remove the JetBrains phpstorm dependency, fix a bunch of weird types ([b1cd7d4](https://github.com/php-weather/common/commit/b1cd7d48c0700c35d427727286f86311b84028a2))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
